@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sb_horizontal_margin_minus">5dp</dimen>
+    <dimen name="sb_horizontal_margin">24dp</dimen>
+    <dimen name="sb_vertical_margin_top">16dp</dimen>
+    <dimen name="sb_vertical_margin_bottom">16dp</dimen>
+</resources>
