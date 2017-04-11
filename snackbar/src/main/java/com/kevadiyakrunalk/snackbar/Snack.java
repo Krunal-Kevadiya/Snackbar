@@ -13,11 +13,12 @@ class Snack implements Parcelable {
     final ColorStateList mBtnTextColor;
     final ColorStateList mBackgroundColor;
     final int mHeight;
-    Typeface mTypeface;
+    final Typeface mTypeface;
+    final SnackBar.SnackBarType mSnackBarType;
 
     Snack(String message, String actionMessage, int actionIcon,
           short duration, ColorStateList textColor,
-          ColorStateList backgroundColor, int height, Typeface typeFace) {
+          ColorStateList backgroundColor, SnackBar.SnackBarType snackBarType, int height, Typeface typeFace) {
 
         mMessage = message;
         mActionMessage = actionMessage;
@@ -25,6 +26,7 @@ class Snack implements Parcelable {
         mDuration = duration;
         mBtnTextColor = textColor;
         mBackgroundColor = backgroundColor;
+        mSnackBarType = snackBarType;
         mHeight = height;
         mTypeface = typeFace;
     }
@@ -38,6 +40,7 @@ class Snack implements Parcelable {
         mBackgroundColor = p.readParcelable(p.getClass().getClassLoader());
         mHeight = p.readInt();
         mTypeface = (Typeface) p.readValue(p.getClass().getClassLoader());
+        mSnackBarType = (SnackBar.SnackBarType) p.readValue(p.getClass().getClassLoader());
     }
 
     public void writeToParcel(Parcel out, int flags) {
@@ -47,6 +50,7 @@ class Snack implements Parcelable {
         out.writeInt((int) mDuration);
         out.writeParcelable(mBtnTextColor, 0);
         out.writeParcelable(mBackgroundColor, 0);
+        out.writeParcelable(mSnackBarType, 0);
         out.writeInt(mHeight);
         out.writeValue(mTypeface);
     }

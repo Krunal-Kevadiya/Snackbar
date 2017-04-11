@@ -122,7 +122,7 @@ public class ErrorView extends View {
                 } else {
                     endAngle = 120;
                     isSad = true;
-                    isJustVisible = true;
+                    isJustVisible = false;
                 }
 
                 postInvalidate();

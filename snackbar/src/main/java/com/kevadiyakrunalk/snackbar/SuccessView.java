@@ -108,7 +108,7 @@ public class SuccessView extends View {
                     endAngle = -360 * (mAnimatedValue);
                 } else if (mAnimatedValue > 0.55 && mAnimatedValue < 0.7) {
                     endAngle = -180;
-                    isSmileLeft = true;
+                    isSmileLeft = false;
                     isSmileRight = false;
                 } else {
                     endAngle = -180;

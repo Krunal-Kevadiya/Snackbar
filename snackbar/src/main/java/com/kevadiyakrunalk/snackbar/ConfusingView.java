@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
@@ -69,7 +70,6 @@ public class ConfusingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         canvas.save();
         canvas.rotate(angle, mWidth / 4f, mHeight * 2f / 5f);
         canvas.drawBitmap(eye, mWidth / 4f - (eye.getWidth() / 2f), mHeight * 2f / 5f - (eye.getHeight() / 2f), mPaint);

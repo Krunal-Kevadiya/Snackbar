@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.SUCCESS)
-                        .withMessage("Krunal")
+                        .withMessage("Sample message akjdfh akjdsh akjsdh kjahds akjhsd akjsdh asjkdh asdjh ")
                         .withGravity(Gravity.TOP)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.CONFUSING)
-                        .withMessage("Krunal")
+                        .withMessage("Sample message akjdfh akjdsh akjsdh kjahds akjhsd akjsdh asjkdh asdjh ")
                         .withGravity(Gravity.BOTTOM)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)

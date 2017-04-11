@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,9 +19,33 @@ import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
 
+import java.util.Locale;
+
 public class SnackBar {
-    public enum SnackBarType {
-        NONE, SUCCESS, WARNING, ERROR, INFO, DEFAULT, CONFUSING
+    public enum SnackBarType implements Parcelable{
+        NONE, SUCCESS, WARNING, ERROR, INFO, DEFAULT, CONFUSING;
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(final Parcel dest, final int flags) {
+            dest.writeInt(ordinal());
+        }
+
+        public static final Creator<SnackBarType> CREATOR = new Creator<SnackBarType>() {
+            @Override
+            public SnackBarType createFromParcel(final Parcel source) {
+                return SnackBarType.values()[source.readInt()];
+            }
+
+            @Override
+            public SnackBarType[] newArray(final int size) {
+                return new SnackBarType[size];
+            }
+        };
     }
 
     private SuccessView successToastView;
@@ -352,16 +377,13 @@ public class SnackBar {
          */
         public SnackBar show() {
             Snack message = new Snack(mMessage,
-                    (mActionMessage != null ? mActionMessage.toUpperCase() : null),
-                    mActionIcon,
-                    mDuration,
+                    (mActionMessage != null ? mActionMessage.toUpperCase(Locale.getDefault()) : null), mActionIcon, mDuration,
                     mTextColor != null ? mTextColor : getActionTextColor(Style.DEFAULT),
                     mBackgroundColor != null ? mBackgroundColor :
                             (mType != SnackBarType.NONE) ?
                                 mContext.getResources().getColorStateList(R.color.sb_snack_bkgnd_white) :
                                 mContext.getResources().getColorStateList(R.color.sb_snack_bkgnd_gray),
-                    mHeight != 0 ? mHeight : 0,
-                    mTypeFace);
+                    mType, mHeight != 0 ? mHeight : 0, mTypeFace);
 
             if (mClear) {
                 mSnackBar.clear(mAnimateClear);

@@ -180,7 +180,9 @@ public class SnackContainer extends FrameLayout {
         holder.messageView.setTypeface(holder.snack.mTypeface);
 
         holder.button.setTextColor(holder.snack.mBtnTextColor);
-        holder.snackView.setBackgroundColor(holder.snack.mBackgroundColor.getDefaultColor());
+        if(holder.snack.mSnackBarType == SnackBar.SnackBarType.NONE)
+            holder.snackView.setBackgroundColor(holder.snack.mBackgroundColor.getDefaultColor());
+
         if (holder.snack.mHeight > 0)
             holder.snackView.getLayoutParams().height = this.getPxFromDp(holder.snack.mHeight);
 
