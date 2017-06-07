@@ -16,8 +16,8 @@ public class SuccessView extends View {
     private float mAnimatedValue = 0f;
     private Paint mPaint;
     private float mWidth = 0f;
+    private float mHeight = 0f;
     private float mEyeWidth = 0f;
-    private float mPadding = 0f;
     private float endAngle = 0f;
     private boolean isSmileLeft = false;
     private boolean isSmileRight = false;
@@ -39,9 +39,6 @@ public class SuccessView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         initPaint();
         initRect();
-        mWidth = getMeasuredWidth();
-        mPadding = dip2px(10);
-        mEyeWidth = dip2px(3);
     }
 
     private void initPaint() {
@@ -53,24 +50,24 @@ public class SuccessView extends View {
     }
 
     private void initRect() {
-        rectF = new RectF((mPadding + mEyeWidth + mEyeWidth / 2 - 20), (mWidth / 3 - 20),
-                (mPadding + mEyeWidth + mEyeWidth / 2 + 80), (mWidth / 3 + 70));
+        mEyeWidth = dip2px(3);
+        mWidth = getMeasuredWidth();
+        mHeight = getMeasuredHeight();
+
+        rectF = new RectF(mWidth/2-(mWidth/2-10), mHeight/2-(mWidth/2-10), mWidth/2+(mWidth/2-10), mHeight/2+(mWidth/2-10));
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mPaint.setStyle(Paint.Style.STROKE);
-        initRect();
         canvas.drawArc(rectF, 180, endAngle, false, mPaint);
 
         mPaint.setStyle(Paint.Style.FILL);
-        if (isSmileLeft) {
-            canvas.drawCircle(mPadding + mEyeWidth + mEyeWidth / 2, mWidth / 3, mEyeWidth, mPaint);
-        }
-        if (isSmileRight) {
-            canvas.drawCircle(mWidth - mPadding - mEyeWidth - mEyeWidth / 2, mWidth / 3, mEyeWidth, mPaint);
-        }
+        if (isSmileLeft)
+            canvas.drawCircle(mWidth/2-(mWidth/2-30), mHeight/3, mEyeWidth, mPaint);
+        if (isSmileRight)
+            canvas.drawCircle(mWidth/2+(mWidth/2-30), mHeight/3, mEyeWidth, mPaint);
     }
 
     public int dip2px(float dpValue) {
@@ -100,7 +97,6 @@ public class SuccessView extends View {
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
-
                 mAnimatedValue = (float) valueAnimator.getAnimatedValue();
                 if (mAnimatedValue < 0.5) {
                     isSmileLeft = false;
@@ -115,7 +111,6 @@ public class SuccessView extends View {
                     isSmileLeft = true;
                     isSmileRight = true;
                 }
-
                 postInvalidate();
             }
         });

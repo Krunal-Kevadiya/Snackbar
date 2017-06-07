@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/snackBar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/SnackBar.SnackBar"
+    android:background="@drawable/background_toast">
+
+    <com.kevadiyakrunalk.snackbar.ConnectedView
+        android:id="@+id/connectedView"
+        android:layout_width="@dimen/sb_view_size"
+        android:layout_height="@dimen/sb_view_size"
+        android:layout_gravity="center_vertical|left"
+        android:gravity="center_vertical|left"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/sb_view_size"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/connected_toast">
+
+        <TextView
+            android:id="@id/snackMessage"
+            style="@style/SnackBar.Message"
+            tools:text="Sample message"/>
+
+        <TextView
+            android:id="@id/snackButton"
+            style="@style/SnackBar.Button"
+            tools:text="Action"/>
+    </LinearLayout>
+</LinearLayout>

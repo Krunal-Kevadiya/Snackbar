@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
@@ -14,13 +15,16 @@ public class ErrorView extends View {
     private RectF rectF = new RectF();
     private RectF leftEyeRectF = new RectF();
     private RectF rightEyeRectF = new RectF();
+
     private ValueAnimator valueAnimator;
     private float mAnimatedValue = 0f;
     private Paint mPaint;
+
     private float mWidth = 0f;
+    private float mHeight = 0f;
     private float mEyeWidth = 0f;
-    private float mPadding = 0f;
     private float endAngle = 0f;
+
     private boolean isJustVisible = false;
     private boolean isSad = false;
 
@@ -41,9 +45,6 @@ public class ErrorView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         initPaint();
         initRect();
-        mWidth = getMeasuredWidth();
-        mPadding = dip2px(10);
-        mEyeWidth = dip2px(3);
     }
 
     private void initPaint() {
@@ -55,29 +56,30 @@ public class ErrorView extends View {
     }
 
     private void initRect() {
-        rectF = new RectF((mPadding + mEyeWidth + mEyeWidth / 2 - 20), (mWidth / 3 + 20),
-                (mPadding + mEyeWidth + mEyeWidth / 2 + 80), (mWidth / 3 + 150));
-        leftEyeRectF = new RectF(mPadding + mEyeWidth - mEyeWidth, mWidth / 3 -
-                mEyeWidth, mPadding + mEyeWidth + mEyeWidth, mWidth / 3 + mEyeWidth);
-        rightEyeRectF = new RectF(mWidth - mPadding - 5 * mEyeWidth / 2, mWidth / 3 -
-                mEyeWidth, mWidth - mPadding - mEyeWidth / 2, mWidth / 3 + mEyeWidth);
+        mWidth = getMeasuredWidth();
+        mHeight = getMeasuredWidth();
+        mEyeWidth = dip2px(3);
+
+        rectF = new RectF(mWidth/2-(mWidth/2-5), mHeight-(mWidth/2), mWidth/2+(mWidth/2-5), mHeight+mWidth-25);
+        leftEyeRectF = new RectF(mWidth/2+25-mEyeWidth, mHeight/3-mEyeWidth, mWidth/2+25+mEyeWidth, mHeight/3+mEyeWidth);
+        rightEyeRectF = new RectF(mWidth/3-5-mEyeWidth, mHeight/3-mEyeWidth, mWidth/3-5+mEyeWidth, mHeight/3+mEyeWidth);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mPaint.setStyle(Paint.Style.STROKE);
-        initRect();
         canvas.drawArc(rectF, 210, endAngle, false, mPaint);
 
         mPaint.setStyle(Paint.Style.FILL);
         if (isJustVisible) {
-            canvas.drawCircle(mPadding + mEyeWidth + mEyeWidth / 2, mWidth / 3, mEyeWidth, mPaint);
-            canvas.drawCircle(mWidth - mPadding - mEyeWidth - mEyeWidth / 2, mWidth / 3, mEyeWidth, mPaint);
+            canvas.drawCircle(mWidth/2+25, mHeight/3, mEyeWidth, mPaint);
+            canvas.drawCircle(mWidth/3-5, mHeight/3, mEyeWidth, mPaint);
         }
+
         if (isSad) {
-            canvas.drawArc(leftEyeRectF, 160, -220, false, mPaint);
-            canvas.drawArc(rightEyeRectF, 20, 220, false, mPaint);
+            canvas.drawArc(leftEyeRectF, 20, 220, false, mPaint);
+            canvas.drawArc(rightEyeRectF, 160, -220, false, mPaint);
         }
     }
 

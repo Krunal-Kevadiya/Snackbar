@@ -93,7 +93,6 @@ public class DefaultView extends View {
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
-
                 mAnimatedValue = (float) valueAnimator.getAnimatedValue();
                 postInvalidate();
             }

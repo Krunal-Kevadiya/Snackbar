@@ -37,11 +37,6 @@ public class WarningView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         initPaint();
         initRect();
-        mHeight = getMeasuredHeight();
-        mWidth = getMeasuredWidth();
-        mPadding = convertDpToPixel(2);
-        mPaddingBottom = mPadding * 2;
-        mStrokeWidth = convertDpToPixel(2);
     }
 
     private void initPaint() {
@@ -53,11 +48,17 @@ public class WarningView extends View {
     }
 
     private void initRect() {
+        mPadding = dip2px(2);
+        mPaddingBottom = mPadding * 2;
+        mStrokeWidth = dip2px(2);
+        mHeight = getMeasuredHeight();
+        mWidth = getMeasuredWidth();
+
         rectFOne = new RectF(mPadding, 0, mWidth - mPadding, mWidth - mPaddingBottom);
-        rectFTwo = new RectF((float) (1.5 * mPadding), convertDpToPixel(6) + mPadding +
-                mHeight / 3, mPadding + convertDpToPixel(9), convertDpToPixel(6) + mPadding + mHeight / 2);
-        rectFThree = new RectF(mPadding + convertDpToPixel(9), convertDpToPixel(3) + mPadding +
-                mHeight / 3, mPadding + convertDpToPixel(18), convertDpToPixel(3) + mPadding + mHeight / 2);
+        rectFTwo = new RectF((float) (1.5 * mPadding), dip2px(6) + mPadding +
+                mHeight / 3, mPadding + dip2px(9), dip2px(6) + mPadding + mHeight / 2);
+        rectFThree = new RectF(mPadding + dip2px(9), dip2px(3) + mPadding +
+                mHeight / 3, mPadding + dip2px(18), dip2px(3) + mPadding + mHeight / 2);
     }
 
     @Override
@@ -66,28 +67,28 @@ public class WarningView extends View {
         mPaint.setStyle(Paint.Style.STROKE);
         initRect();
         canvas.drawArc(rectFOne, 170, -144, false, mPaint);
-        canvas.drawLine(mWidth - convertDpToPixel(3) - mStrokeWidth, mPadding +
-                        mHeight / 6, mWidth - convertDpToPixel(3) - mStrokeWidth,
-                mHeight - convertDpToPixel(2) - mHeight / 4, mPaint);
+        canvas.drawLine(mWidth - dip2px(3) - mStrokeWidth, mPadding +
+                        mHeight / 6, mWidth - dip2px(3) - mStrokeWidth,
+                mHeight - dip2px(2) - mHeight / 4, mPaint);
 
-        canvas.drawLine(mWidth - convertDpToPixel(3) - mStrokeWidth - convertDpToPixel(8), (float) (mPadding +
-                        mHeight / 8.5), mWidth - convertDpToPixel(3) - mStrokeWidth - convertDpToPixel(8),
-                (float) (mHeight - convertDpToPixel(3) - mHeight / 2.5), mPaint);
+        canvas.drawLine(mWidth - dip2px(3) - mStrokeWidth - dip2px(8), (float) (mPadding +
+                        mHeight / 8.5), mWidth - dip2px(3) - mStrokeWidth - dip2px(8),
+                (float) (mHeight - dip2px(3) - mHeight / 2.5), mPaint);
 
-        canvas.drawLine(mWidth - convertDpToPixel(3) - mStrokeWidth - convertDpToPixel(17), mPadding +
-                        mHeight / 10, mWidth - convertDpToPixel(3) - mStrokeWidth - convertDpToPixel(17),
-                (float) (mHeight - convertDpToPixel(3) - mHeight / 2.5), mPaint);
+        canvas.drawLine(mWidth - dip2px(3) - mStrokeWidth - dip2px(17), mPadding +
+                        mHeight / 10, mWidth - dip2px(3) - mStrokeWidth - dip2px(17),
+                (float) (mHeight - dip2px(3) - mHeight / 2.5), mPaint);
 
-        canvas.drawLine(mWidth - convertDpToPixel(3) - mStrokeWidth - convertDpToPixel(26), mPadding +
-                        mHeight / 10, mWidth - convertDpToPixel(3) - mStrokeWidth - convertDpToPixel(26),
-                (float) (mHeight - convertDpToPixel(2) - mHeight / 2.5), mPaint);
+        canvas.drawLine(mWidth - dip2px(3) - mStrokeWidth - dip2px(26), mPadding +
+                        mHeight / 10, mWidth - dip2px(3) - mStrokeWidth - dip2px(26),
+                (float) (mHeight - dip2px(2) - mHeight / 2.5), mPaint);
 
         canvas.drawArc(rectFTwo, 170, 180, false, mPaint);
         canvas.drawArc(rectFThree, 175, -150, false, mPaint);
     }
 
-    public float convertDpToPixel(float dp) {
-        DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
-        return dp * ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+    public int dip2px(float dpValue) {
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 }

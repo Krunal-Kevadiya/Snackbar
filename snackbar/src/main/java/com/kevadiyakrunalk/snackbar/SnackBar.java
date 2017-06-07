@@ -23,7 +23,7 @@ import java.util.Locale;
 
 public class SnackBar {
     public enum SnackBarType implements Parcelable{
-        NONE, SUCCESS, WARNING, ERROR, INFO, DEFAULT, CONFUSING;
+        NONE, SUCCESS, WARNING, ERROR, INFO, DEFAULT, CONFUSING, CONNECTED;
 
         @Override
         public int describeContents() {
@@ -54,6 +54,7 @@ public class SnackBar {
     private InfoView infoToastView;
     private DefaultView defaultToastView;
     private ConfusingView confusingToastView;
+    private ConnectedView connectedToastView;
 
     public static final short LONG_SNACK = 5000;
     public static final short MED_SNACK = 3500;
@@ -107,6 +108,8 @@ public class SnackBar {
             snackLayout = activity.getLayoutInflater().inflate(R.layout.sb_default_snack, container, false);
         } else if(type == SnackBarType.CONFUSING) {
             snackLayout = activity.getLayoutInflater().inflate(R.layout.sb_confusing_snack, container, false);
+        } else if(type == SnackBarType.CONNECTED) {
+            snackLayout = activity.getLayoutInflater().inflate(R.layout.sb_connected_snack, container, false);
         }
 
         init(container, snackLayout, type);
@@ -131,6 +134,8 @@ public class SnackBar {
             snackLayout = inflater.inflate(R.layout.sb_default_snack, ((ViewGroup) v), false);
         } else if(type == SnackBarType.CONFUSING) {
             snackLayout = inflater.inflate(R.layout.sb_confusing_snack, ((ViewGroup) v), false);
+        } else if(type == SnackBarType.CONNECTED) {
+            snackLayout = inflater.inflate(R.layout.sb_connected_snack, ((ViewGroup) v), false);
         }
         init((ViewGroup) v, snackLayout, type);
     }
@@ -157,6 +162,8 @@ public class SnackBar {
             defaultToastView = (DefaultView) v.findViewById(R.id.defaultView);
         } else if(type == SnackBarType.CONFUSING) {
             confusingToastView = (ConfusingView) v.findViewById(R.id.confusingView);
+        } else if(type == SnackBarType.CONNECTED) {
+            connectedToastView = (ConnectedView) v.findViewById(R.id.connectedView);
         }
     }
 
@@ -450,6 +457,8 @@ public class SnackBar {
             defaultToastView.startAnim();
         } else if(type == SnackBarType.CONFUSING) {
             confusingToastView.startAnim();
+        } else if(type == SnackBarType.CONNECTED) {
+            connectedToastView.startAnim();
         }
 
         mSnackContainer.showSnack(message, mParentView, mVisibilityChangeListener);

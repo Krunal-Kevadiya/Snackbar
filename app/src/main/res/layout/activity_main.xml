@@ -40,4 +40,9 @@
         android:layout_height="wrap_content"
         android:text="Confuse"
         android:id="@+id/btn_confuse" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connected"
+        android:id="@+id/btn_connected" />
 </LinearLayout>

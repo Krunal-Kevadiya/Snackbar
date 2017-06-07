@@ -93,6 +93,17 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         });
+        findViewById(R.id.btn_connected).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.CONNECTED)
+                        .withMessage("Sample message akjdfh akjdsh akjsdh kjahds akjhsd akjsdh asjkdh asdjh ")
+                        .withGravity(Gravity.BOTTOM)
+                        .withActionMessageId(R.string.action)
+                        .withDuration(SnackBar.LONG_SNACK)
+                        .show();
+            }
+        });
     }
 
     @Override
