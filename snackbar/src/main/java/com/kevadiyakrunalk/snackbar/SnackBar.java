@@ -168,7 +168,6 @@ public class SnackBar {
     }
 
     public static class Builder {
-
         private SnackBar mSnackBar;
         private SnackBarType mType;
 

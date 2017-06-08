@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.kevadiyakrunalk.snackbar.SnackBar;
+import com.kevadiyakrunalk.snackbar.SnackToast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,88 +22,96 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.NONE)
-                        .withMessage("Krunal")
+                        .withMessage("Hi!, I am developer.")
                         .withGravity(Gravity.TOP)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)
                         .show();
+                SnackToast.makeText(MainActivity.this, "Hi!, I am developer.", Toast.LENGTH_LONG, Gravity.BOTTOM, SnackToast.SnackToastType.NONE);
             }
         });
         findViewById(R.id.btn_success).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.SUCCESS)
-                        .withMessage("Sample message akjdfh akjdsh akjsdh kjahds akjhsd akjsdh asjkdh asdjh ")
+                        .withMessage("Hi!, I am developer.")
                         .withGravity(Gravity.TOP)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)
                         .show();
+                SnackToast.makeText(MainActivity.this, "Hi!, I am developer.", Toast.LENGTH_LONG, Gravity.BOTTOM, SnackToast.SnackToastType.SUCCESS);
             }
         });
         findViewById(R.id.btn_warning).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.WARNING)
-                        .withMessage("Krunal")
+                        .withMessage("Hi!, I am developer.")
                         .withGravity(Gravity.TOP)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)
                         .show();
+                SnackToast.makeText(MainActivity.this, "Hi!, I am developer.", Toast.LENGTH_LONG, Gravity.BOTTOM, SnackToast.SnackToastType.WARNING);
             }
         });
         findViewById(R.id.btn_error).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.ERROR)
-                        .withMessage("Krunal")
+                        .withMessage("Hi!, I am developer.")
                         .withGravity(Gravity.TOP)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)
                         .show();
+                SnackToast.makeText(MainActivity.this, "Hi!, I am developer.", Toast.LENGTH_LONG, Gravity.BOTTOM, SnackToast.SnackToastType.ERROR);
             }
         });
         findViewById(R.id.btn_info).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.INFO)
-                        .withMessage("Krunal")
-                        .withGravity(Gravity.BOTTOM)
+                        .withMessage("Hi!, I am developer.")
+                        .withGravity(Gravity.TOP)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)
                         .show();
+                SnackToast.makeText(MainActivity.this, "Hi!, I am developer.", Toast.LENGTH_LONG, Gravity.BOTTOM, SnackToast.SnackToastType.INFO);
             }
         });
         findViewById(R.id.btn_default).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.DEFAULT)
-                        .withMessage("Krunal")
-                        .withGravity(Gravity.BOTTOM)
+                        .withMessage("Hi!, I am developer.")
+                        .withGravity(Gravity.TOP)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)
                         .show();
+                SnackToast.makeText(MainActivity.this, "Hi!, I am developer.", Toast.LENGTH_LONG, Gravity.BOTTOM, SnackToast.SnackToastType.DEFAULT);
             }
         });
         findViewById(R.id.btn_confuse).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.CONFUSING)
-                        .withMessage("Sample message akjdfh akjdsh akjsdh kjahds akjhsd akjsdh asjkdh asdjh ")
-                        .withGravity(Gravity.BOTTOM)
+                        .withMessage("Hi!, I am developer.")
+                        .withGravity(Gravity.TOP)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)
                         .show();
+                SnackToast.makeText(MainActivity.this, "Hi!, I am developer.", Toast.LENGTH_LONG, Gravity.BOTTOM, SnackToast.SnackToastType.CONFUSING);
             }
         });
         findViewById(R.id.btn_connected).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSnackBar = new SnackBar.Builder(MainActivity.this, SnackBar.SnackBarType.CONNECTED)
-                        .withMessage("Sample message akjdfh akjdsh akjsdh kjahds akjhsd akjsdh asjkdh asdjh ")
-                        .withGravity(Gravity.BOTTOM)
+                        .withMessage("Hi!, I am developer.")
+                        .withGravity(Gravity.TOP)
                         .withActionMessageId(R.string.action)
                         .withDuration(SnackBar.LONG_SNACK)
                         .show();
+                SnackToast.makeText(MainActivity.this, "Hi!, I am developer.", Toast.LENGTH_LONG, Gravity.BOTTOM, SnackToast.SnackToastType.CONNECTED);
             }
         });
     }
